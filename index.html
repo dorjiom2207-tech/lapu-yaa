@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Birthday EXP Lane MLBB Neon Vibe 🎂💜</title>
+
+<style>
+/* ——— GENERAL STYLE ——— */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #1a0b2e, #4c1d95);
+  color: #fff;
+  text-align: center;
+  overflow-x: hidden;
+  position: relative;
+}
+
+#overlay {
+  position: fixed; top:0; left:0; width:100%; height:100%;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.05), rgba(0,0,0,0.7));
+  z-index: 0;
+  pointer-events: none;
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%,100% { background: radial-gradient(circle at center, rgba(255,255,255,0.05), rgba(0,0,0,0.7)); }
+  50% { background: radial-gradient(circle at center, rgba(255,255,255,0.15), rgba(0,0,0,0.7)); }
+}
+
+/* ——— LOADING SCREEN ——— */
+#loadingScreen {
+  position: fixed; top:0; left:0; width:100%; height:100%;
+  display: flex; justify-content: center; align-items: center; flex-direction: column;
+  color: white;
+  z-index: 999;
+  background: radial-gradient(circle at center, #000000, #2d1b3a);
+}
+#loadingScreen p { margin-top: 15px; font-size: 1.2em; }
+
+/* ——— MAIN CONTENT ——— */
+#mainContent { display: none; padding: 20px; animation: fadeIn 1s ease-in-out; position: relative; z-index: 1; }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+/* ——— MESSAGE BOX ——— */
+.messageBox {
+  background: rgba(255,255,255,0.1); padding: 20px; border-radius: 14px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.6);
+  max-width: 500px; margin: 20px auto;
+}
+
+/* ——— LAPU-LAPU BLADE BUTTONS (OPTION D) ——— */
+.btn {
+  margin-top: 20px;
+  padding: 14px 25px;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+
+  /* Lapu-Lapu inspired */
+  background: linear-gradient(135deg, #8b0000, #ff4d4d);
+  border: 3px solid gold;
+  text-shadow: 0 0 8px gold;
+
+  box-shadow: 0 0 25px red, 0 0 40px gold;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 0 40px #ff4d4d, 0 0 70px gold;
+}
+
+.btn:active {
+  animation: bladeClick 0.15s linear;
+}
+
+@keyframes bladeClick {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.9) rotate(-3deg); }
+  100% { transform: scale(1); }
+}
+
+/* ——— MUSIC BUTTON ——— */
+#musicControl {
+  position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px;
+  border-radius: 50%; background: rgba(255,255,255,0.7); border: none;
+  font-size: 1.4em; color: #8b5cf6; cursor: pointer; box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+  z-index: 1000;
+}
+
+/* ——— ANIMATIONS ——— */
+@keyframes fall { from { transform: translateY(0); } to { transform: translateY(120vh); opacity: 0; } }
+@keyframes flyUp { from { transform: translateY(0); } to { transform: translateY(-120vh); opacity: 0; } }
+@keyframes idleHero { 0%{ transform: translateY(0);} 50%{ transform: translateY(-5px);} 100%{ transform: translateY(0);} }
+@keyframes flexHero { 0%{ transform: scale(1);} 50%{ transform: scale(1.05) translateY(-5px);} 100%{ transform: scale(1);} }
+
+/* Stronger screen shake */
+@keyframes screenShake {
+  0% { transform: translate(0px,0px); }
+  20% { transform: translate(-15px,12px); }
+  40% { transform: translate(15px,-12px); }
+  60% { transform: translate(-18px,8px); }
+  80% { transform: translate(12px,-8px); }
+  100% { transform: translate(0px,0px); }
+}
+
+/* ——— LAPU ART ——— */
+.lapu-container { position: relative; width: 180px; height: 240px; margin: 20px auto; animation: idleHero 1.5s ease-in-out infinite alternate; }
+.lapu-body { position: absolute; bottom: 0; width: 80px; height: 130px; background: linear-gradient(135deg,#6b21a8,#9333ea); left: 50%; transform: translateX(-50%); border-radius: 15px 15px 6px 6px; box-shadow: 0 0 25px #bb86fc; }
+.lapu-head { position: absolute; bottom: 130px; width: 60px; height: 60px; background: linear-gradient(135deg,#6b21a8,#9333ea); left: 50%; transform: translateX(-50%); border-radius: 50%; box-shadow: 0 0 20px #bb86fc; }
+.lapu-headband { position: absolute; bottom: 155px; width: 80px; height: 10px; background: #ff0000; left: 50%; transform: translateX(-50%); border-radius: 5px; box-shadow: 0 0 20px #ff6b6b, 0 0 30px #ff3d3d; }
+
+.lapu-cake { position: absolute; bottom: 70px; left: 50%; transform: translateX(-50%); width: 60px; height: 60px; background: linear-gradient(135deg,#ff9de2,#ffc0cb,#ffeb7f); border-radius: 15px; animation: cakePulse 1.5s infinite; }
+
+@keyframes cakePulse {
+  0% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(1.15); }
+  100% { transform: translateX(-50%) scale(1); }
+}
+
+/* ——— EXP BAR ——— */
+.exp-bar-container {
+  position: relative; width: 80%; max-width: 400px; height: 25px; background: rgba(255,255,255,0.15);
+  border-radius: 12px; margin: 10px auto; overflow: hidden; box-shadow: 0 0 15px rgba(0,0,0,0.4);
+}
+.exp-bar-fill {
+  height: 100%; width: 0%; background: linear-gradient(90deg,#ff3d3d,#ff9de2,#a855f7);
+  border-radius: 12px; transition: width 2s ease-in-out;
+}
+
+</style>
+</head>
+
+
+
+<body>
+
+<div id="overlay"></div>
+
+<div id="loadingScreen">
+  <div class="lapu-container">
+    <div class="lapu-body"></div>
+    <div class="lapu-head"></div>
+    <div class="lapu-headband"></div>
+  </div>
+  <p>Loading Birthday EXP Lane... 🎂🎉</p>
+</div>
+
+<audio id="bgm" loop>
+  <source src="https://cdn.pixabay.com/audio/2023/03/14/audio_4d25e74c63.mp3" type="audio/mpeg">
+</audio>
+
+<button id="musicControl" onclick="toggleMusic()">🔈</button>
+
+<div id="mainContent">
+  <h1>Birthday EXP Lane Surprise 🎂💜</h1>
+  <h2 style="color:#ff9de2; font-weight:600; margin-top:10px;">Lapu-Lapu Mains Detected ⚔️🔥</h2>
+
+  <div id="mainLapu" class="lapu-container">
+    <div class="lapu-body"></div>
+    <div class="lapu-head"></div>
+    <div class="lapu-headband"></div>
+    <div class="lapu-cake" id="mainCake"></div>
+  </div>
+
+  <!-- EXP BAR -->
+  <div class="exp-bar-container">
+    <div class="exp-bar-fill" id="expFill"></div>
+    <div class="exp-text" id="expText">EXP LANER ENERGY: 0% — For Kinley Phuntsho ⚔️💜</div>
+  </div>
+
+  <div class="messageBox">
+    <p>Happy Birthday EXP Laner, <strong>Kinley Phuntsho</strong>! 🎉🥳</p>
+    <p>Your rotations are clean, your skills are sharp, and your vibes are unbeatable 😭😂</p>
+    <p>If the page lags, blame me… I’m the DARK SYSTEM ⚡</p>
+    <p>Hope your day is full of epic plays, big crits, and bigger cake slices! 🍰🎂</p>
+  </div>
+
+  <button class="btn" onclick="showGift()">Open Birthday Gift 🎁</button>
+
+  <div id="giftBox" class="messageBox" style="display:none;">
+    <p>🎉 Birthday Surprise! 🎉</p>
+    <p>I wanted to give you something cool but all I had was… this website 😭</p>
+    <p>You’re officially granted a dual-blade BIRTHDAY BUFF ⚔️🔥</p>
+  </div>
+
+  <button id="secretBtn" class="btn" onclick="showSecret()">Secret Birthday EXP Buff ⭐</button>
+
+</div>
+
+
+<script>
+const loadingScreen = document.getElementById('loadingScreen');
+const mainContent = document.getElementById('mainContent');
+const bgm = document.getElementById('bgm');
+const musicControl = document.getElementById('musicControl');
+const expFill = document.getElementById('expFill');
+const expText = document.getElementById('expText');
+const mainLapu = document.getElementById('mainLapu');
+const mainCake = document.getElementById('mainCake');
+let musicPlaying = false;
+
+/* ——— LOADING ——— */
+window.onload = () => {
+  setTimeout(() => {
+    loadingScreen.style.display = 'none';
+    mainContent.style.display = 'block';
+    fillExpBar();
+  }, 2500);
+};
+
+/* ——— MUSIC ——— */
+function toggleMusic() {
+  if (musicPlaying) { bgm.pause(); musicControl.textContent = "🔈"; }
+  else { bgm.play(); musicControl.textContent = "🎵"; }
+  musicPlaying = !musicPlaying;
+}
+
+/* ——— EXP BAR ANIMATION ——— */
+function fillExpBar() {
+  let progress = 0;
+  const interval = setInterval(() => {
+    if (progress >= 100) {
+      clearInterval(interval);
+
+      /* Flex animation */
+      mainLapu.style.animation = "flexHero 0.8s ease-in-out 3";
+
+      /* Screen shake */
+      triggerStrongShake();
+
+      /* MLBB particles */
+      critNumbers();
+      slashTrails();
+      expOrbs();
+    } else {
+      progress++;
+      expFill.style.width = progress + '%';
+      expText.textContent = `EXP LANER ENERGY: ${progress}% — For Kinley Phuntsho ⚔️💜`;
+    }
+  }, 20);
+}
+
+/* ——— STRONG SHAKE ——— */
+function triggerStrongShake() {
+  document.body.style.animation = "screenShake 0.6s ease-in-out 2";
+  setTimeout(() => document.body.style.animation = "", 1200);
+}
+
+/* ——— MLBB PARTICLES ——— */
+function critNumbers() {
+  for (let i = 0; i < 10; i++) {
+    const num = document.createElement('div');
+    num.textContent = Math.floor(Math.random()*5000 + 2000) + "!";
+    num.style.position = 'fixed';
+    num.style.left = Math.random()*window.innerWidth + "px";
+    num.style.top = Math.random()*window.innerHeight + "px";
+    num.style.fontSize = "30px";
+    num.style.fontWeight = "900";
+    num.style.color = "#ff3d3d";
+    num.style.textShadow = "0 0 10px yellow";
+    num.style.animation = "critMove 1s ease-out";
+    document.body.appendChild(num);
+    setTimeout(()=>num.remove(), 1000);
+  }
+}
+
+@keyframes critMove {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-60px) scale(1.4); opacity: 0; }
+}
+
+function slashTrails() {
+  for (let i = 0; i < 8; i++) {
+    const s = document.createElement('div');
+    s.textContent = "✦";
+    s.style.position = 'fixed';
+    s.style.left = Math.random()*window.innerWidth + "px";
+    s.style.top = Math.random()*window.innerHeight + "px";
+    s.style.fontSize = "40px";
+    s.style.color = "#ff004c";
+    s.style.animation = "slash 0.8s ease-out";
+    document.body.appendChild(s);
+    setTimeout(()=>s.remove(), 800);
+  }
+}
+
+@keyframes slash {
+  0% { transform: rotate(0deg) scale(0.8); opacity: 1; }
+  100% { transform: rotate(90deg) scale(2); opacity: 0; }
+}
+
+function expOrbs() {
+  for (let i = 0; i < 12; i++) {
+    const orb = document.createElement('div');
+    orb.textContent = "🔮";
+    orb.style.position = 'fixed';
+    orb.style.left = Math.random()*window.innerWidth + "px";
+    orb.style.top = Math.random()*window.innerHeight + "px";
+    orb.style.fontSize = "25px";
+    orb.style.animation = "orbRise 2s ease-out";
+    document.body.appendChild(orb);
+    setTimeout(()=>orb.remove(), 2000);
+  }
+}
+
+@keyframes orbRise {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-100px); opacity: 0; }
+}
+
+/* ——— GIFT ——— */
+function showGift() {
+  document.getElementById('giftBox').style.display = 'block';
+  triggerStrongShake();
+}
+
+/* ——— SECRET ——— */
+function showSecret() {
+  alert("🔥 +1000 Savage Energy +2000 Lapu-Lapu Aura\nHappy Birthday King ⚔️");
+}
+</script>
+
+</body>
+</html>
